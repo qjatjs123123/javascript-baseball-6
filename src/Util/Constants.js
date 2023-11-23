@@ -10,6 +10,8 @@ const BASEBALL = Object.freeze({
 
 const GAME = Object.freeze({
   gameEnd: '3스트라이크',
+  restart: '1',
+  quit: '2',
 });
 
 export { REGEX, BASEBALL, GAME };

@@ -12,6 +12,7 @@ const OUTPUT_MESSAGE = Object.freeze({
 
 const INPUT_MESSAGE = Object.freeze({
   baseBallNumberMessage: '숫자를 입력해주세요 : ',
+  restartMessage: '게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.',
 });
 
 const ERROR_MESSAGE = Object.freeze({

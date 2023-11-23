@@ -6,6 +6,11 @@ class InputView {
     const baseBallNumber = await Console.readLineAsync(INPUT_MESSAGE.baseBallNumberMessage);
     return baseBallNumber;
   }
+
+  static async inputRestartOrQuit() {
+    const restartOrQuit = await Console.readLineAsync(INPUT_MESSAGE.restartMessage);
+    return restartOrQuit;
+  }
 }
 
 export default InputView;

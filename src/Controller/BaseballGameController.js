@@ -24,11 +24,16 @@ class BaseballGameController {
     switch (gameResult) {
       case GAME.gameEnd:
         OuputView.printGameEndMessage();
-        break;
+        return this.handleRestartOrQuit();
+
       default:
         await this.handleInputBaseballNumber();
-        break;
     }
+  }
+
+  async handleRestartOrQuit() {
+    const restartOrQuit = await InputView.inputRestartOrQuit();
+    if (restartOrQuit === GAME.restart) await this.gameStart();
   }
 
   async gameStart() {
