@@ -8,4 +8,8 @@ const BASEBALL = Object.freeze({
   length: 3,
 });
 
-export { REGEX, BASEBALL };
+const GAME = Object.freeze({
+  gameEnd: '3스트라이크',
+});
+
+export { REGEX, BASEBALL, GAME };

@@ -7,6 +7,7 @@ const OUTPUT_MESSAGE = Object.freeze({
     const strikeStr = strikeCount !== 0 ? `${strikeCount}스트라이크` : '';
     return ballStr + strikeStr;
   },
+  gameEndMessage: '3개의 숫자를 모두 맞히셨습니다! 게임 종료',
 });
 
 const INPUT_MESSAGE = Object.freeze({

@@ -2,6 +2,7 @@ import OuputView from '../View/OutputView.js';
 import InputView from '../View/InputView.js';
 import UserBaseballNumber from '../Domain/UserBaseballNumber.js';
 import Computer from '../Domain/Computer.js';
+import { GAME } from '../Util/Constants.js';
 
 class BaseballGameController {
   #computer;
@@ -13,8 +14,21 @@ class BaseballGameController {
   async handleInputBaseballNumber() {
     const userNumber = await InputView.inputBaseBallNumber();
     const userBaseballNumber = new UserBaseballNumber(userNumber);
-    this.#computer.compareNumber(userBaseballNumber.userNumber);
-    await this.handleInputBaseballNumber();
+    const gameResult = this.#computer.compareNumber(userBaseballNumber.userNumber);
+    this.handleGameResult(gameResult);
+  }
+
+  async handleGameResult(gameResult) {
+    OuputView.printGameResultMessage(gameResult);
+
+    switch (gameResult) {
+      case GAME.gameEnd:
+        OuputView.printGameEndMessage();
+        break;
+      default:
+        await this.handleInputBaseballNumber();
+        break;
+    }
   }
 
   async gameStart() {
