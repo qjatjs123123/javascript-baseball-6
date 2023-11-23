@@ -1,21 +1,26 @@
 import OuputView from '../View/OutputView.js';
 import InputView from '../View/InputView.js';
 import UserBaseballNumber from '../Domain/UserBaseballNumber.js';
-import ComputerBaseballNumber from '../Domain/ComputerBaseballNumber.js';
+import Computer from '../Domain/Computer.js';
 
 class BaseballGameController {
-  #computerBaseballNumber;
+  #computer;
 
   gameInitalSetting() {
-    this.#computerBaseballNumber = new ComputerBaseballNumber();
-    console.log(this.#computerBaseballNumber.getComputerNumber());
+    this.#computer = new Computer();
+  }
+
+  async handleInputBaseballNumber() {
+    const userNumber = await InputView.inputBaseBallNumber();
+    const userBaseballNumber = new UserBaseballNumber(userNumber);
+    this.#computer.compareNumber(userBaseballNumber.userNumber);
+    await this.handleInputBaseballNumber();
   }
 
   async gameStart() {
     this.gameInitalSetting();
     OuputView.printGameStartMessage();
-    const userNumber = await InputView.inputBaseBallNumber();
-    const userBaseballNumber = new UserBaseballNumber(userNumber);
+    await this.handleInputBaseballNumber();
   }
 }
 

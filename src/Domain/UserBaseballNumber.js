@@ -2,10 +2,11 @@ import { ERROR_MESSAGE } from '../Util/Message.js';
 import { REGEX } from '../Util/Constants.js';
 
 class UserBaseballNumber {
-  #userNumber;
+  userNumber;
 
   constructor(userNumber) {
     this.#validation(userNumber);
+    this.userNumber = userNumber.split('').map((number) => Number(number));
   }
 
   #validation(userNumber) {

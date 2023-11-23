@@ -1,5 +1,12 @@
 const OUTPUT_MESSAGE = Object.freeze({
   gameStartMessage: '숫자 야구 게임을 시작합니다.',
+  gameResult: (ballCount, strikeCount) => {
+    if (ballCount === 0 && strikeCount === 0) return '낫싱';
+
+    const ballStr = ballCount !== 0 ? `${ballCount}볼 ` : '';
+    const strikeStr = strikeCount !== 0 ? `${strikeCount}스트라이크` : '';
+    return ballStr + strikeStr;
+  },
 });
 
 const INPUT_MESSAGE = Object.freeze({
