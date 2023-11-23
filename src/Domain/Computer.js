@@ -18,7 +18,6 @@ class ComputerBaseballNumber {
       }
     }
     this.#computerNumbers = computer;
-    console.log(this.#computerNumbers);
   }
 
   compareNumber(userNumber) {

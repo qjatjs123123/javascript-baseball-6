@@ -3,6 +3,7 @@ import InputView from '../View/InputView.js';
 import UserBaseballNumber from '../Domain/UserBaseballNumber.js';
 import Computer from '../Domain/Computer.js';
 import { GAME } from '../Util/Constants.js';
+import { ERROR_MESSAGE } from '../Util/Message.js';
 
 class BaseballGameController {
   #computer;
@@ -15,7 +16,7 @@ class BaseballGameController {
     const userNumber = await InputView.inputBaseBallNumber();
     const userBaseballNumber = new UserBaseballNumber(userNumber);
     const gameResult = this.#computer.compareNumber(userBaseballNumber.userNumber);
-    this.handleGameResult(gameResult);
+    await this.handleGameResult(gameResult);
   }
 
   async handleGameResult(gameResult) {
@@ -24,7 +25,8 @@ class BaseballGameController {
     switch (gameResult) {
       case GAME.gameEnd:
         OuputView.printGameEndMessage();
-        return this.handleRestartOrQuit();
+        await this.handleRestartOrQuit();
+        break;
 
       default:
         await this.handleInputBaseballNumber();
@@ -33,12 +35,22 @@ class BaseballGameController {
 
   async handleRestartOrQuit() {
     const restartOrQuit = await InputView.inputRestartOrQuit();
-    if (restartOrQuit === GAME.restart) await this.gameStart();
+
+    switch (restartOrQuit) {
+      case GAME.restart:
+        await this.gameStart();
+        break;
+
+      case GAME.quit:
+        break;
+
+      default:
+        throw new Error(ERROR_MESSAGE.restartError);
+    }
   }
 
   async gameStart() {
     this.gameInitalSetting();
-    OuputView.printGameStartMessage();
     await this.handleInputBaseballNumber();
   }
 }

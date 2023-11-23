@@ -1,4 +1,5 @@
 import BaseballGameController from './Controller/BaseballGameController.js';
+import OuputView from './View/OutputView.js';
 
 class App {
   #baseBallGameController;
@@ -8,7 +9,8 @@ class App {
   }
 
   async play() {
-    this.#baseBallGameController.gameStart();
+    OuputView.printGameStartMessage();
+    await this.#baseBallGameController.gameStart();
   }
 }
 const app = new App();

@@ -62,7 +62,7 @@ describe('숫자야구 게임 결과 테스트', () => {
   describe('1볼 ', () => {
     // given
     const testCases = [
-      { input: [2, 5, 6] , expected: '1볼 ' },
+      { input: [2, 5, 6] , expected: '1볼' },
     ];
 
     test.each(testCases)('$input를 입력한 경우 $expected가 나와야 한다.', ({ input, expected }) => {
@@ -76,7 +76,7 @@ describe('숫자야구 게임 결과 테스트', () => {
   describe('2볼 ', () => {
     // given
     const testCases = [
-      { input: [2, 5, 3] , expected: '2볼 ' },
+      { input: [2, 5, 3] , expected: '2볼' },
     ];
 
     test.each(testCases)('$input를 입력한 경우 $expected가 나와야 한다.', ({ input, expected }) => {
@@ -90,7 +90,7 @@ describe('숫자야구 게임 결과 테스트', () => {
   describe('3볼 ', () => {
     // given
     const testCases = [
-      { input: [3, 5, 1] , expected: '3볼 ' },
+      { input: [3, 5, 1] , expected: '3볼' },
     ];
 
     test.each(testCases)('$input를 입력한 경우 $expected가 나와야 한다.', ({ input, expected }) => {
